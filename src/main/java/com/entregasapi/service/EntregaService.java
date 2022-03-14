@@ -1,16 +1,14 @@
 package com.entregasapi.service;
 
-import com.entregasapi.exception.NegocioException;
 import com.entregasapi.model.Cliente;
 import com.entregasapi.model.Entrega;
 import com.entregasapi.model.StatusEntrega;
-import com.entregasapi.repository.ClienteRepository;
 import com.entregasapi.repository.EntregaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 @AllArgsConstructor
 @Service
@@ -25,7 +23,7 @@ public class EntregaService {
 
         entrega.setCliente(cliente);
         entrega.setStatus(StatusEntrega.PENDENTE);
-        entrega.setDataPedido(LocalDateTime.now());
+        entrega.setDataPedido(OffsetDateTime.now());
 
         return entregaRepository.save(entrega);
     }
